@@ -18,10 +18,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByDepartment(String department);
 
-    List<User> findByAgeLessThan(Integer age);
+    //List<User> findByAgeLessThan(Integer age);
 
-    @Query("SELECT user FROM User user WHERE user.age>=:threshold")
-    List<User> findByAgeLargerThan(@Param("threshold") int threshold);
+    @Query("SELECT u FROM User u WHERE u.age<:threshold")
+    List<User> findByAgeYoungerThan(@Param("threshold") int threshold);
 
 
 
