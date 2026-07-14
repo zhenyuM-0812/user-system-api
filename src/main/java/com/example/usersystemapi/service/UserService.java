@@ -18,7 +18,7 @@ public interface UserService {
 
     List<UserResponseDto> searchByFirstName(String firstName);
 
-    List<UserResponseDto> searchByLasttName(String lastName);
+    List<UserResponseDto> searchByLastName(String lastName);
 
     List<UserResponseDto> searchByDepartment(String department);
 
