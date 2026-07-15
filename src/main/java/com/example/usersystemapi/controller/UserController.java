@@ -1,11 +1,16 @@
 package com.example.usersystemapi.controller;
 
+import com.example.usersystemapi.dto.UserRequestDto;
 import com.example.usersystemapi.dto.UserResponseDto;
+import com.example.usersystemapi.entity.User;
 import com.example.usersystemapi.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 
@@ -14,6 +19,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
+
+    @PostMapping
+    public ResponseEntity<UserResponseDto> createNewUser(@Valid @RequestBody UserRequestDto request){
+        UserResponseDto created = userService.createUser(request);
+        URI location = URI.create("api/users/"+created.getId());
+        return ResponseEntity.created(location).body(created);
+    }
+
 
 
     @GetMapping("/{id}")
@@ -37,7 +51,26 @@ public class UserController {
 
 
 
+    //younger user
+    @GetMapping("/age")
+    public ResponseEntity<List<UserResponseDto>> getYoungerUsers(@RequestParam int threshold){
+        List<UserResponseDto> searchingResult = userService.getYoungerUsers(threshold);
+        return ResponseEntity.ok(searchingResult);
+    }
 
+
+    @PutMapping
+    public ResponseEntity<UserResponseDto> updateUser(@PathVariable Long id, @Valid @RequestBody UserRequestDto request){
+        UserResponseDto updated = userService.updateUser(id,request);
+        return ResponseEntity.ok(updated);
+    }
+
+
+    @DeleteMapping("/id")
+    public ResponseEntity<Void> deleteBook(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
 
