@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public UserResponseDto createUser(UserRequestDto request){
-        userRepository.findByNumber(request.getPhoneNumber()).ifPresent(
+        userRepository.findByPhoneNumber(request.getPhoneNumber()).ifPresent(
                 existing ->{
                     throw new DuplicateUserException(
                             "User with number "+ request.getPhoneNumber() + "already exists"
@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserService{
         User user = findOrThrow(id);
 
         if (!user.getPhoneNumber().equals(request.getPhoneNumber())){
-            userRepository.findByNumber(request.getPhoneNumber()).ifPresent(
+            userRepository.findByPhoneNumber(request.getPhoneNumber()).ifPresent(
                     existing -> {
                         throw new DuplicateUserException(
                                 "User with number "+ request.getPhoneNumber() + "already exists"
