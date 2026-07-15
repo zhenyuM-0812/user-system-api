@@ -13,12 +13,12 @@ import lombok.*;
 
 public class UserRequestDto {
     @NotBlank(message = "Name is required")
-    @Size(max = 200, message = "Last name is too long")
-    private String lastName;
+    @Size(max = 200, message = "Name is too long")
+    private String name;
 
-    @NotBlank(message = "Name is required")
-    @Size(max = 200, message = "Fisrst name is too long")
-    private String firstName;
+    @NotBlank(message = "PhoneNumber is required")
+    @Size(max = 20, message = "Phone number is too long")
+    private String phoneNumber;
 
     @NotBlank(message = "Age is required")
     @Min(value =0 , message = "Age can not be negative")

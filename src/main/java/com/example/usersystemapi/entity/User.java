@@ -1,22 +1,26 @@
 package com.example.usersystemapi.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.*;
 
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue
     private Long id;
 
     @Column(nullable=false,length=200)
-    private String lastName;
+    private String name;
 
-    @Column(nullable=false,length=200)
-    private String firstName;
+    @Column(nullable=false,unique = true, length=20)
+    private String phoneNumber;
 
     @Column(nullable=false)
     private Integer age;

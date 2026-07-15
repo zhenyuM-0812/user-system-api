@@ -8,19 +8,22 @@ import java.util.List;
 public interface UserService {
     UserResponseDto createUser(UserRequestDto request);
 
-    UserResponseDto getUserById(Long id);
+    UserResponseDto getById(Long id);
 
     List<UserResponseDto> getAllUsers();
+
+    List<UserResponseDto> searchByDepartment(String department);
+
+    List<UserResponseDto> getYoungerUsers(int threshold);
 
     void deleteUser(Long id);
 
     UserResponseDto updateUser(Long id, UserRequestDto request);
 
-    List<UserResponseDto> searchByFirstName(String firstName);
+    //List<UserResponseDto> searchByName(String name);
 
-    List<UserResponseDto> searchByLastName(String lastName);
+    //List<UserResponseDto> searchByNumber(String phoneNumber);
 
-    List<UserResponseDto> searchByDepartment(String department);
 
-    List<UserResponseDto> getYoungerUsers(int threshold);
+
 }

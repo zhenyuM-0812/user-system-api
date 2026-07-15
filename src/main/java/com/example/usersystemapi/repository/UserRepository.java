@@ -8,13 +8,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    List<User> findByLastName(String lastName);
+    Optional<User> findByNumber(String phoneNumber);
 
-    List<User> findByFirstName(String firstName);
+    List<User> findByName(String name);
+
+    List<User> findByPhone(String phoneNumber);
 
     List<User> findByDepartment(String department);
 
