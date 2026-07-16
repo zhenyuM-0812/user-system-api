@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+out/
+.idea/
+*/iml
+
 ### STS ###
 .apt_generated
 .classpath
