@@ -2,6 +2,7 @@ package com.example.usersystemapi.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -20,7 +21,7 @@ public class UserRequestDto {
     @Size(max = 20, message = "Phone number is too long")
     private String phoneNumber;
 
-    @NotBlank(message = "Age is required")
+    @NotNull(message = "Age is required")
     @Min(value =0 , message = "Age can not be negative")
     private Integer age;
 

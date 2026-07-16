@@ -97,6 +97,7 @@ public class UserServiceImpl implements UserService{
         }
         user.setName(request.getName());
         user.setAge(request.getAge());
+        user.setPhoneNumber(request.getPhoneNumber());
         user.setDepartment(request.getDepartment());
 
         User updated = userRepository.save(user);
@@ -115,6 +116,7 @@ public class UserServiceImpl implements UserService{
                 .id(user.getId())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())
+                .age(user.getAge())
                 .department(user.getDepartment())
                 .build();
     }
